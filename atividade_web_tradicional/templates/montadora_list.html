@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} Montadoras {% endblock %}
+
+{% block title_page %} Lista de Montadoras Cadastradas {% endblock %}
+
+{% block content %}
+    <div>
+      <button>
+        <a href="/montadora_add">Nova Montadora</a>
+      </button> 
+    </div>
+    <ul>
+      {% for montadora in montadoras %}
+        <li>{{ montadora.nome }}</li>
+
+          <form action="/montadora_details/{{ montadora.id }}" method="get">
+            <button type="submit" class="btn-details">Detalhes</button>
+          </form>
+          <form action="/montadora_update/{{ montadora.id }}" method="get">
+            <button type="submit" class="btn-update">Editar</button>
+          </form>
+          <form action="/montadora_delete/{{ montadora.id }}" method="post">
+          <input type="hidden" name="_method" value="delete">
+            <button type="submit" class="btn-delete">Excluir</button>
+          </form>
+
+      {% endfor %}
+    </ul>
+{% endblock %}

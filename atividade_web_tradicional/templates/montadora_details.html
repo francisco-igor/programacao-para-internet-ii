@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Detalhes da Montadora {% endblock %}
+
+{% block page_title %} Detalhes da Montadora {% endblock %}
+
+{% block content %}
+    <div style="display: inline-block; width: 50%; border: 1px solid #ccc; border-radius: 10px; padding: 10px;">
+        <h3>{{ montadora.nome }}</h3>
+        <p><strong>País de Origem:</strong> {{ montadora.pais }}</p>
+        <p><strong>Ano de Fundação:</strong> {{ montadora.ano_fundacao }}</p>
+        <form action="/montadora_update/{{ montadora.id }}" method="get">
+            <button type="submit" class="btn btn-outline-primary">Atualizar</button>
+        </form>
+        <br>
+        <form action="/montadora_list" method="get">
+            <button type="submit" class="btn btn-outline-secondary">Voltar</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

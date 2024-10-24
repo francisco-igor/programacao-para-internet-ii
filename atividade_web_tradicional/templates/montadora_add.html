@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} Nova Montadora {% endblock %}
+
+{% block title_page %} Nova Montadora {% endblock %}
+
+{% block content %}
+    <form action="/montadora_add" method="post">
+        <input type="text" name="nome" placeholder="Nome da Montadora.." required>
+        <input type="text" name="pais" placeholder="Pais..." required>
+        <input type="number" name="ano_fundacao" placeholder="Ano da Montadora" required>
+        <button type="submit" class="btn-operation">Adicionar</button>
+    </form>
+{% endblock %}
