@@ -1,5 +1,5 @@
 from sqlmodel import Session, select
-from ..models.models import Veiculo
+from models.models import Veiculo
 
 class VeiculoRepository:
 

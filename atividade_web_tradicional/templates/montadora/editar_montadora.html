@@ -6,7 +6,7 @@
 
 {% block content %} 
 <div style="display: inline-block; width: 50%; border: 1px solid #ccc; border-radius: 10px; padding: 10px;">
-    <form action="/montadora_update/{{ montadora.id }}" method="post">
+    <form action="/montadoras/{{ montadora.id }}/editar" method="post">
         <label for="nome">Nome da Montadora:</label>
         <input type="text" name="nome" id ="nome" value="{{ montadora.nome }}" class="form-control"><br>
         <br>
@@ -19,7 +19,7 @@
         <button type="submit" class="btn btn-outline-primary">Atualizar</button>
     </form>
     <br>
-    <form action="/montadora_list" method="get">
+    <form action="/montadoras" method="get">
         <button type="submit" class="btn btn-outline-secondary">Voltar</button>
     </form>
 </div>

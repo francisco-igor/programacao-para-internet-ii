@@ -9,11 +9,11 @@
         <h3>{{ montadora.nome }}</h3>
         <p><strong>País de Origem:</strong> {{ montadora.pais }}</p>
         <p><strong>Ano de Fundação:</strong> {{ montadora.ano_fundacao }}</p>
-        <form action="/montadora_update/{{ montadora.id }}" method="get">
+        <form action="/montadoras/{{ montadora.id }}/editar" method="get">
             <button type="submit" class="btn btn-outline-primary">Atualizar</button>
         </form>
         <br>
-        <form action="/montadora_list" method="get">
+        <form action="/montadoras" method="get">
             <button type="submit" class="btn btn-outline-secondary">Voltar</button>
         </form>
     </div>

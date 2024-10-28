@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %} Montadoras {% endblock %}
+
+{% block title_page %} Lista de Montadoras Cadastradas {% endblock %}
+
+{% block content %}
+<div>
+    <button class="btn btn-add">
+        <a href="/montadoras/novo">Nova Montadora</a>
+    </button>
+</div>
+
+<ul>
+    {% for montadora in montadoras %}
+    <li>
+        <span>{{ montadora.nome }}</span>
+
+        <div>
+            <!-- Botão de Detalhes -->
+            <form action="/montadoras/{{ montadora.id }}" method="get">
+                <button type="submit">Detalhes</button>
+            </form>
+
+            <!-- Botão de Detalhes -->
+            <button class="btn-details" data-id="{{ montadora.id }}">Detalhes</button>
+
+            <!-- Modal de Detalhes -->
+            <div class="modal-details" id="modal-details-{{ montadora.id }}" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="icon">🔍</span>
+                        <h2>Detalhes da Montadora</h2>
+                    </div>
+            
+                    <div class="update modal-body">
+                        <p><strong>Nome:</strong> {{ montadora.nome }}</p>
+                        <p><strong>País:</strong> {{ montadora.pais }}</p>
+                        <p><strong>Ano de Fundação:</strong> {{ montadora.ano_fundacao }}</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-id="{{ montadora.id }}">Fechar</button>
+
+                        <form action="/montadoras/{{ montadora.id }}/editar" method="get">
+                            <button type="submit" class="btn btn-update-form">Atualizar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Botão de Editar -->
+            <form action="/montadoras/{{ montadora.id }}/editar" method="get">
+                <button type="submit">Editar</button>
+            </form>
+
+
+
+            <!-- Botão de Excluir -->
+            <button class="btn-delete" data-id="{{ montadora.id }}">Excluir</button>
+
+            <!-- Modal de Exclusão -->
+            <div class="modal-delete"  id="modal-delete-{{ montadora.id }}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="icon">⚠️</span>
+                        <h2>Excluir Montadora</h2>
+                    </div>
+            
+                    <div class="delete modal-body">
+                        <p>Tem certeza que deseja excluir a montadora {{ montadora.nome }}?</p>
+                    </div>
+            
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-id="{{ montadora.id }}">Cancelar</button>
+
+                        <form action="/montadoras/{{ montadora.id }}/deletar" method="post">
+                            <button type="submit" class="btn btn-delete-confirm">Sim, tenho</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
